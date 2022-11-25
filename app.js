@@ -6,12 +6,12 @@ const cors = require("cors");
 const app = express();
 // ******************* Module imported ***********************
 const authRoute = require("./routes/auth");
-// const userRoute = require("./routes/user");
-// const itemRoute = require("./routes/item");
-// const cartRoute = require("./routes/cart");
-// const orderRoute = require("./routes/order");
-// const feedbackRoute = require("./routes/feedback");
-// const stripeRoute = require("./routes/stripe");
+const userRoute = require("./routes/user");
+const itemRoute = require("./routes/item");
+const cartRoute = require("./routes/cart");
+const orderRoute = require("./routes/order");
+const feedbackRoute = require("./routes/feedback");
+const stripeRoute = require("./routes/stripe");
 
 // ********************* Middleware *****************************
 app.use(express.static("public"));
@@ -24,12 +24,12 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoute);
-// app.use("/api/users", userRoute);
-// app.use("/api/items", itemRoute);
-// app.use("/api/carts", cartRoute);
-// app.use("/api/orders", orderRoute);
-// app.use("/api/feedbacks", feedbackRoute);
-// app.use("/api/checkout", stripeRoute);
+app.use("/api/users", userRoute);
+app.use("/api/items", itemRoute);
+app.use("/api/carts", cartRoute);
+app.use("/api/orders", orderRoute);
+app.use("/api/feedbacks", feedbackRoute);
+app.use("/api/checkout", stripeRoute);
 
 // middleware for error handling
 app.use(function (req, res, next) {
